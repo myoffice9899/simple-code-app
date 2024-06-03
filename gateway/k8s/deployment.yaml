@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-deployment
+  namespace: simple-quote-app
+spec:
+  replicas: 1  # Adjust as needed
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+        - name: api
+          image: localhost:5001/gateway:latest  # Replace with your image name/tag
+          ports:
+            - containerPort: 3000
+          env:
+            - name: QUOTES_API
+              value: "http://quotes-service:5000"

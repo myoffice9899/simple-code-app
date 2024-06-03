@@ -1,0 +1,13 @@
+# quotes-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: quotes-service
+  namespace: simple-quote-app
+spec:
+  selector:
+    app: quotes
+  ports:
+    - protocol: TCP
+      port: 5000  # Service port
+      targetPort: 5000  # Container port

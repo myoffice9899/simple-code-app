@@ -1,0 +1,15 @@
+# frontend-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+  namespace: simple-quote-app
+spec:
+  selector:
+    app: frontend
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 80  # External port
+      targetPort: 80  # Container port
+      nodePort: 32080

@@ -1,0 +1,21 @@
+# quotes-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quotes-deployment
+  namespace: simple-quote-app
+spec:
+  replicas: 1  # Adjust as needed for scalability
+  selector:
+    matchLabels:
+      app: quotes
+  template:
+    metadata:
+      labels:
+        app: quotes
+    spec:
+      containers:
+        - name: quotes
+          image: localhost:5001/quote:latest  # Replace with your image name/tag
+          ports:
+            - containerPort: 5000
